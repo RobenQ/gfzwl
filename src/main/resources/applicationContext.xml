@@ -7,11 +7,17 @@
 	<!-- <p:bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<p:property name="location" value="classpath:jdbc.properties" />
 	</p:bean> -->
-	<p:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<!-- <p:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<p:property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></p:property>
 		<p:property name="url" value="jdbc:mysql://127.0.0.1:3306/gfzwl?serverTimezone=GMT%2B8"></p:property>
 		<p:property name="username" value="root"></p:property>
 		<p:property name="password" value="ZQ1419276383.."></p:property>
+	</p:bean> -->
+	<p:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<p:property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></p:property>
+		<p:property name="url" value="jdbc:mysql://127.0.0.1:3306/gfzwl?serverTimezone=GMT%2B8"></p:property>
+		<p:property name="username" value="gfzwl"></p:property>
+		<p:property name="password" value="gfzwl1419"></p:property>
 	</p:bean>
 
 	<p:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

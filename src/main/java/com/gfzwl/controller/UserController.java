@@ -1,15 +1,20 @@
 package com.gfzwl.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import javax.print.attribute.HashAttributeSet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gfzwl.bean.Picture;
@@ -143,6 +148,24 @@ public class UserController {
 		
 		mv.setViewName("/jsp/resourcelist2");
 		return mv;
+	}
+	
+	@RequestMapping(value="resourcelist3")
+	@ResponseBody
+	public Map<String, Object> resourceList3(HttpServletRequest request) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		String type = request.getParameter("type");
+		String section = request.getParameter("section");
+		System.out.println(type+"==="+section);
+		if (section.equals("0")) {
+			List<TeachResource> resourcesList = teachResourceService.selAll(type);
+			map.put("list", resourcesList);
+			return map;
+		} else {
+			List<TeachResource> resourcesList = teachResourceService.selByTypeAndSection(type, section);
+			map.put("list", resourcesList);
+			return map;
+		}
 	}
 	
 	@RequestMapping(value="to2_1_1")
